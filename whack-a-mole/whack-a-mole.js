@@ -21,7 +21,7 @@ function randomMole(arr) {
 
   // get random item
   const cell = arr[randomIndex]
-
+  cell.onclick = whackedMole
   // add picture of mole to cell
   return (cell.innerHTML = '<img id = "mole" src = "mole.png">')
 }
@@ -33,3 +33,9 @@ randomMole(array)
 // Now you'll need to add an [onClick()]method for the mole that calls a function (say, named `whackedMole`) when you click on the image.
 
 // The whackedMole function should remove the mole from the current cell and then, using a function that lets you re-use the code that you wrote earlier, add the mole to a new random cell.
+
+function whackedMole(event) {
+  const mole = event.target
+  mole.remove()
+  randomMole(array)
+}
