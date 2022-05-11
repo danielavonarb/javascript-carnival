@@ -41,19 +41,23 @@ let shoesImgIndex = 0
 
 let clothingIndex = 0
 
-function chooseBodyPart() {
+function chooseBodyPartUp() {
   clothingIndex++
-  if (clothingIndex == 3) {
+  if (clothingIndex >= 3) {
     clothingIndex = 0
-  } else if (clothingIndex == 0) {
-    clothingIndex = 3
-    clothingIndex--
   }
-
   console.log(clothingIndex)
 }
 
-function changeHead() {
+function chooseBodyPartDown() {
+  clothingIndex--
+  if (clothingIndex < 0) {
+    clothingIndex = 2
+  }
+  console.log(clothingIndex)
+}
+
+/* function changeHead() {
   if (clothingIndex == 0) {
     let headSrc = './images/head' + headImgIndex + '.png'
     head.src = headSrc
@@ -66,9 +70,9 @@ function changeHead() {
       headImgIndex--
     }
   }
-}
+} */
 
-function changeBody() {
+/* function changeBody() {
   if (clothingIndex == 1) {
     let bodySrc = './images/body' + bodyImgIndex + '.png'
     body.src = bodySrc
@@ -81,10 +85,50 @@ function changeBody() {
       bodyImgIndex--
     }
   }
-}
+} */
 
-function changeShoes() {
+/* function changeShoes() {
   if (clothingIndex == 2) {
+    let shoesSrc = './images/shoes' + shoesImgIndex + '.png'
+    shoes.src = shoesSrc
+
+    shoesImgIndex++
+    if (shoesImgIndex > arrayShoes.length - 1) {
+      shoesImgIndex = 0
+    } else if (shoesImgIndex == 0) {
+      shoesImgIndex = arrayShoes.length - 1
+      shoesImgIndex--
+    }
+  }
+} */
+
+function changeClothes() {
+  if (clothingIndex == 0) {
+    // change head
+    let headSrc = './images/head' + headImgIndex + '.png'
+    head.src = headSrc
+
+    headImgIndex++
+    if (headImgIndex > arrayHead.length - 1) {
+      headImgIndex = 0
+    } else if (headImgIndex == 0) {
+      headImgIndex = arrayHead.length - 1
+      headImgIndex--
+    }
+  } else if (clothingIndex == 1) {
+    //chage body
+    let bodySrc = './images/body' + bodyImgIndex + '.png'
+    body.src = bodySrc
+
+    bodyImgIndex++
+    if (bodyImgIndex > arrayBody.length - 1) {
+      bodyImgIndex = 0
+    } else if (bodyImgIndex == 0) {
+      bodyImgIndex = arrayBody.length - 1
+      bodyImgIndex--
+    }
+  } else if (clothingIndex == 2) {
+    // change shoes
     let shoesSrc = './images/shoes' + shoesImgIndex + '.png'
     shoes.src = shoesSrc
 
@@ -106,23 +150,25 @@ function checkKey(event) {
   switch (event.keyCode) {
     //left
     case 37:
-      changeShoes()
-      changeBody()
-      changeHead()
+      //changeShoes()
+      //changeBody()
+      //changeHead()
+      changeClothes()
       break
     //up
     case 38:
-      chooseBodyPart()
+      chooseBodyPartUp()
       break
     //right
     case 39:
-      changeShoes()
-      changeBody()
-      changeHead()
+      //changeShoes()
+      //changeBody()
+      //changeHead()
+      changeClothes()
       break
     //down
     case 40:
-      chooseBodyPart()
+      chooseBodyPartDown()
       break
   }
 }
