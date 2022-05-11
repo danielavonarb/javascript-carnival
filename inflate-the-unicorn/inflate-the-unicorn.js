@@ -6,9 +6,9 @@ console.log('Inflate The Unicorn!')
 
 const unicorns = document.querySelectorAll('img')
 
-const unicorn1 = document.getElementById('unicorn1')
+/* const unicorn1 = document.getElementById('unicorn1')
 const unicorn2 = document.getElementById('unicorn2')
-const unicorn3 = document.getElementById('unicorn3')
+const unicorn3 = document.getElementById('unicorn3') */
 
 const images = [
   './images/unicorn-0.png',
@@ -21,11 +21,27 @@ for (let i = 0; i < unicorns.length; i++) {
   unicorns[i].onclick = unicornClicked
 }
 
-let currentImageU1 = 0
-let currentImageU2 = 0
-let currentImageU3 = 0
+//let currentImageU1 = 0
+//let currentImageU2 = 0
+//let currentImageU3 = 0
+
+let currentImage = [0, 0, 0]
 
 function unicornClicked(event) {
+  let unicorn = event.target
+  let id = unicorn.id[7]
+
+  currentImage[id]++
+
+  unicorn.src = images[currentImage[id]]
+
+  if (currentImage[id] >= images.length - 1) {
+    alert('I am a happy unicorn!')
+    currentImage[id] = -1
+  }
+}
+
+/* function unicornClicked(event) {
   let unicorn = event.target
 
   if (unicorn == unicorn1) {
@@ -50,4 +66,4 @@ function unicornClicked(event) {
       currentImageU3 = -1
     }
   }
-}
+} */
