@@ -25,11 +25,11 @@ for (let i = 0; i < unicorns.length; i++) {
 //let currentImageU2 = 0
 //let currentImageU3 = 0
 
-let currentImage = [0, 0, 0]
+let currentImage = [0, 0, 0] // I got this part from Joseph's video
 
 function unicornClicked(event) {
   let unicorn = event.target
-  let id = unicorn.id[7]
+  let id = unicorn.id[7] // I got this from Joseph's video
 
   currentImage[id]++
 
@@ -40,6 +40,8 @@ function unicornClicked(event) {
     currentImage[id] = -1
   }
 }
+
+// My unrefactored code
 
 /* function unicornClicked(event) {
   let unicorn = event.target
