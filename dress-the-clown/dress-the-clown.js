@@ -35,10 +35,14 @@ const arrayShoes = [
   './images/shoes5.png',
 ]
 
-let headImgIndex = 0
-let bodyImgIndex = 0
-let shoesImgIndex = 0
+//let headImgIndex = 0
+//let bodyImgIndex = 0
+//let shoesImgIndex = 0
 
+// I got the idea of putting the indexes from Joseph's video
+let indexes = [0, 0, 0]
+let bodyParts = [head, body, shoes]
+let imgsArray = [arrayHead, arrayBody, arrayShoes]
 let clothingIndex = 0
 
 function chooseBodyPartUp() {
@@ -57,52 +61,27 @@ function chooseBodyPartDown() {
   console.log(clothingIndex)
 }
 
-/* function changeHead() {
-  if (clothingIndex == 0) {
-    let headSrc = './images/head' + headImgIndex + '.png'
-    head.src = headSrc
-
-    headImgIndex++
-    if (headImgIndex > arrayHead.length - 1) {
-      headImgIndex = 0
-    } else if (headImgIndex == 0) {
-      headImgIndex = arrayHead.length - 1
-      headImgIndex--
-    }
-  }
-} */
-
-/* function changeBody() {
-  if (clothingIndex == 1) {
-    let bodySrc = './images/body' + bodyImgIndex + '.png'
-    body.src = bodySrc
-
-    bodyImgIndex++
-    if (bodyImgIndex > arrayBody.length - 1) {
-      bodyImgIndex = 0
-    } else if (bodyImgIndex == 0) {
-      bodyImgIndex = arrayBody.length - 1
-      bodyImgIndex--
-    }
-  }
-} */
-
-/* function changeShoes() {
-  if (clothingIndex == 2) {
-    let shoesSrc = './images/shoes' + shoesImgIndex + '.png'
-    shoes.src = shoesSrc
-
-    shoesImgIndex++
-    if (shoesImgIndex > arrayShoes.length - 1) {
-      shoesImgIndex = 0
-    } else if (shoesImgIndex == 0) {
-      shoesImgIndex = arrayShoes.length - 1
-      shoesImgIndex--
-    }
-  }
-} */
-
 function changeClothes() {
+  let index = indexes[clothingIndex]
+  let bodyPart = bodyParts[clothingIndex]
+  let imgs = imgsArray[clothingIndex]
+
+  index++
+  if (index > imgs.length - 1) {
+    index = 0
+  } else if (index <= 0) {
+    index = imgs.length - 1
+    index--
+  }
+
+  // I got this line of code from Joseph's video
+  indexes[clothingIndex] = index
+  bodyPart.src = imgs[index]
+}
+
+// This was my unrefactored code
+
+/*function changeClothes() {
   if (clothingIndex == 0) {
     // change head
     let headSrc = './images/head' + headImgIndex + '.png'
@@ -140,7 +119,7 @@ function changeClothes() {
       shoesImgIndex--
     }
   }
-}
+}*/
 
 document.onkeydown = checkKey
 
@@ -150,9 +129,6 @@ function checkKey(event) {
   switch (event.keyCode) {
     //left
     case 37:
-      //changeShoes()
-      //changeBody()
-      //changeHead()
       changeClothes()
       break
     //up
@@ -161,9 +137,6 @@ function checkKey(event) {
       break
     //right
     case 39:
-      //changeShoes()
-      //changeBody()
-      //changeHead()
       changeClothes()
       break
     //down
