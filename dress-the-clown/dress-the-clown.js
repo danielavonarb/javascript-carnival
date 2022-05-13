@@ -39,22 +39,17 @@ const arrayShoes = [
 //let bodyImgIndex = 0
 //let shoesImgIndex = 0
 
-// I got the idea of putting the indexes from Joseph's video
+// I got the idea of putting the indexes into an array from Joseph's video
 let indexes = [0, 0, 0]
 let bodyParts = [head, body, shoes]
 let imgsArray = [arrayHead, arrayBody, arrayShoes]
 let clothingIndex = 0
 
-function chooseBodyPartUp() {
-  clothingIndex++
+function chooseBodyPart() {
   if (clothingIndex >= 3) {
     clothingIndex = 0
   }
-  console.log(clothingIndex)
-}
 
-function chooseBodyPartDown() {
-  clothingIndex--
   if (clothingIndex < 0) {
     clothingIndex = 2
   }
@@ -121,6 +116,22 @@ function changeClothes() {
   }
 }*/
 
+/*function chooseBodyPartUp() {
+  clothingIndex++
+  if (clothingIndex >= 3) {
+    clothingIndex = 0
+  }
+  console.log(clothingIndex)
+}
+
+function chooseBodyPartDown() {
+  clothingIndex--
+  if (clothingIndex < 0) {
+    clothingIndex = 2
+  }
+  console.log(clothingIndex)
+}*/
+
 document.onkeydown = checkKey
 
 function checkKey(event) {
@@ -133,7 +144,8 @@ function checkKey(event) {
       break
     //up
     case 38:
-      chooseBodyPartUp()
+      clothingIndex++
+      chooseBodyPart()
       break
     //right
     case 39:
@@ -141,7 +153,8 @@ function checkKey(event) {
       break
     //down
     case 40:
-      chooseBodyPartDown()
+      clothingIndex--
+      chooseBodyPart()
       break
   }
 }
